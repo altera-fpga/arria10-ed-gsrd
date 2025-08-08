@@ -1,4 +1,4 @@
-# Arria 10 (A10) Golden Hardware Reference Design (GHRD)
+# Arria 10 Golden Hardware Reference Design (GHRD)
 
 The GHRD is part of the Golden System Reference Design (GSRD), which provides a complete solution, including exercising soft IP in the fabric, booting to U-Boot, then Linux, and running sample Linux applications.
 
@@ -22,12 +22,12 @@ This is only applicable if the feature is enabled.
   - SGMII with HPS EMAC and Triple-Speed Ethernet Intel FPGA IP (PHY)
 
 ## Dependency
-* Altera Quartus Prime 25.1
+* Altera Quartus Prime 25.1.1
 * Supported Board
   - Intel Arria 10 SoC Development Kit
 
 ## Tested Platform for the GHRD Make flow
-* SUSE Linux Enterprise Server 12 SP5
+* SUSE Linux Enterprise Server 15 SP4
 
 ## Supported Designs
 ### Baseline

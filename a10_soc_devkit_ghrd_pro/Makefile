@@ -316,7 +316,6 @@ clean:
 
 ################################################
 # Checking for the existence of intel custom ip
-DISABLE_INTEL_CUSTOM_IP_DL = 1
 INTEL_CUSTOM_IP_DIR = intel_custom_ip
 INTEL_CUSTOM_IP_DIR_TARGET = $(INTEL_CUSTOM_IP_DIR)-$(wildcard $(INTEL_CUSTOM_IP_DIR))
 INTEL_CUSTOM_IP_DIR_PRESENT = $(INTEL_CUSTOM_IP_DIR)-$(INTEL_CUSTOM_IP_DIR)
@@ -325,9 +324,6 @@ INTEL_CUSTOM_IP_DIR_ABSENT = $(INTEL_CUSTOM_IP_DIR)-
 $(INTEL_CUSTOM_IP_DIR_PRESENT):
 	@echo "Folder $(INTEL_CUSTOM_IP_DIR) exists. Compilation will proceed with local directory"
 
-ifeq ($(DISABLE_INTEL_CUSTOM_IP_DL),1)
-INTEL_CUSTOM_IP_DIR_TARGET =
-else
 $(INTEL_CUSTOM_IP_DIR_ABSENT):
 	@echo "Folder $(INTEL_CUSTOM_IP_DIR) does not exist."
 	@echo "Proceed to copy for link $(INTEL_CUSTOM_IP_LINK)"
@@ -336,7 +332,6 @@ $(INTEL_CUSTOM_IP_DIR_ABSENT):
 	@echo "$(INTEL_CUSTOM_IP_TARBALL) copied"
 #Untar $(INTEL_CUSTOM_IP_TARBALL)
 	tar -xzf $(INTEL_CUSTOM_IP_TARBALL)
-endif
 
 ################################################
 

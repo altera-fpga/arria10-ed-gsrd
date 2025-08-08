@@ -253,6 +253,7 @@ set_global_assignment -name QSYS_FILE $qsysfile
 set_global_assignment -name PROJECT_OUTPUT_DIRECTORY output_files
 set_global_assignment -name SDC_FILE ghrd_timing.sdc
 if {$hps_sgmii == 1} {
+set_global_assignment -name PROGRAMMABLE_POWER_TECHNOLOGY_SETTING "MINIMIZE POWER ONLY"
 set_global_assignment -name SDC_FILE hps_sgmii.sdc
 }
 if {$fpga_dp == 1} {
@@ -308,6 +309,7 @@ set_global_assignment -name GLOBAL_PLACEMENT_EFFORT "OPTIMIZE FOR ROUTABILITY"
 #set_global_assignment -name QII_AUTO_PACKED_REGISTERS NORMAL
 #set_global_assignment -name OPTIMIZATION_MODE "HIGH PERFORMANCE EFFORT"
 #set_global_assignment -name OPTIMIZATION_MODE "AGGRESSIVE PERFORMANCE"
+#set_global_assignment -name OPTIMIZATION_TECHNIQUE SPEED
 set_global_assignment -name AUTO_DELAY_CHAINS_FOR_HIGH_FANOUT_INPUT_PINS ON
 #set_global_assignment -name ROUTER_LCELL_INSERTION_AND_LOGIC_DUPLICATION ON
 set_global_assignment -name SEED 2
@@ -447,6 +449,10 @@ set_instance_assignment -name IO_STANDARD "HIGH SPEED DIFFERENTIAL I/O" -to emac
 set_instance_assignment -name IO_STANDARD "HIGH SPEED DIFFERENTIAL I/O" -to "emac${z}_sgmii_txp(n)"
 set_instance_assignment -name IO_STANDARD "HIGH SPEED DIFFERENTIAL I/O" -to emac${z}_sgmii_rxp
 set_instance_assignment -name IO_STANDARD "HIGH SPEED DIFFERENTIAL I/O" -to "emac${z}_sgmii_rxp(n)"
+set_instance_assignment -name IO_STANDARD "1.8-V" -to sgmii${z}_phy_reset_n
+set_instance_assignment -name IO_STANDARD "1.8-V" -to emac${z}_fpga_mdc
+set_instance_assignment -name IO_STANDARD "1.8-V" -to emac${z}_fpga_mdio
+set_instance_assignment -name IO_STANDARD "1.8-V" -to sgmii${z}_phy_irq_n
 }
 }
 
@@ -458,6 +464,10 @@ set_instance_assignment -name IO_STANDARD "HIGH SPEED DIFFERENTIAL I/O" -to mac$
 set_instance_assignment -name IO_STANDARD "HIGH SPEED DIFFERENTIAL I/O" -to "mac${m}_sgmii_txp(n)"
 set_instance_assignment -name IO_STANDARD "HIGH SPEED DIFFERENTIAL I/O" -to mac${m}_sgmii_rxp
 set_instance_assignment -name IO_STANDARD "HIGH SPEED DIFFERENTIAL I/O" -to "mac${m}_sgmii_rxp(n)"
+set_instance_assignment -name IO_STANDARD "1.8-V" -to sgmii${m}_phy_reset_n
+set_instance_assignment -name IO_STANDARD "1.8-V" -to mac${m}_fpga_mdc
+set_instance_assignment -name IO_STANDARD "1.8-V" -to mac${m}_fpga_mdio
+set_instance_assignment -name IO_STANDARD "1.8-V" -to sgmii${m}_phy_irq_n
 }
 }
 }
