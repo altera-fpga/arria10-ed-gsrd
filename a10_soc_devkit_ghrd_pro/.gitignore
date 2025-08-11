@@ -3,7 +3,6 @@ output_files/
 qdb/
 tmp-clearbox/
 
-intel_custom_ip/
 ip/
 hps_isw_handoff/
 qsys_top/
