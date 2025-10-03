@@ -254,6 +254,7 @@ set_global_assignment -name PROJECT_OUTPUT_DIRECTORY output_files
 set_global_assignment -name SDC_FILE ghrd_timing.sdc
 if {$hps_sgmii == 1} {
 set_global_assignment -name PROGRAMMABLE_POWER_TECHNOLOGY_SETTING "MINIMIZE POWER ONLY"
+set_global_assignment -name OPTIMIZATION_MODE "AGGRESSIVE AREA"
 set_global_assignment -name SDC_FILE hps_sgmii.sdc
 }
 if {$fpga_dp == 1} {
