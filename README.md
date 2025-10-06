@@ -22,7 +22,7 @@ This is only applicable if the feature is enabled.
   - SGMII with HPS EMAC and Triple-Speed Ethernet Intel FPGA IP (PHY)
 
 ## Dependency
-* Altera Quartus Prime 25.1.1
+* Altera Quartus Prime 25.3
 * Supported Board
   - Intel Arria 10 SoC Development Kit
 
