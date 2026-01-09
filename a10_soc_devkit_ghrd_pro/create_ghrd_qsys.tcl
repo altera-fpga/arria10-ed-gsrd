@@ -1459,7 +1459,8 @@ add_component_param "altera_avalon_mm_bridge pb_lwh2f
 
 add_component_param "altera_avalon_sysid_qsys sys_id 
                      IP_FILE_PATH ip/$qsys_name/sys_id.ip   
-                    id $SYSID"
+                    id $SYSID
+                    USE_LIVE_TIMESTAMP 1"
 
 add_component_param "altera_avalon_pio led_pio 
                      IP_FILE_PATH ip/$qsys_name/led_pio.ip  
