@@ -19,12 +19,12 @@ This is applicable to all designs.
 ## Advanced feature
 This is only applicable if the feature is enabled.
   - PCIe RootPort IP
-  - SGMII with HPS EMAC and Triple-Speed Ethernet Intel FPGA IP (PHY)
+  - SGMII with HPS EMAC and Triple-Speed Ethernet FPGA IP (PHY)
 
 ## Dependency
-* Altera Quartus Prime 25.3.1
+* Altera Quartus Prime 26.1
 * Supported Board
-  - Intel Arria 10 SoC Development Kit
+  - Arria 10 SoC Development Kit
 
 ## Tested Platform for the GHRD Make flow
 * SUSE Linux Enterprise Server 15 SP4
@@ -51,7 +51,7 @@ This design boots from SD/MMC and has PCIe RootPort IP.
 make a10-soc-devkit-sdmmc-pcie-gen2x8-all
 ```
 ### HPS Serial Gigabit Media Independent Interface (SGMII)
-This design boots from SD/MMC and enabled SGMII with HPS EMAC and Triple-Speed Ethernet Intel FPGA IP (PHY).
+This design boots from SD/MMC and enabled SGMII with HPS EMAC and Triple-Speed Ethernet FPGA IP (PHY).
 ```bash
 make a10-soc-devkit-sdmmc-sgmii-all
 ```
