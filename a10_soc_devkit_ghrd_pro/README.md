@@ -33,7 +33,7 @@ This design boots from SD/MMC and has PCIe RootPort IP.
 make generate-a10-soc-devkit-sdmmc-pcie-gen2x8
 ```
 ### HPS Serial Gigabit Media Independent Interface (SGMII)
-This design boots from SD/MMC and enabled SGMII with HPS EMAC and Triple-Speed Ethernet Intel FPGA IP (PHY).
+This design boots from SD/MMC and enabled SGMII with HPS EMAC and Triple-Speed Ethernet FPGA IP (PHY).
 ```bash
 make generate-a10-soc-devkit-sdmmc-sgmii
 ```
@@ -51,7 +51,7 @@ for more information on HPS EMIF configuration.
 ### HPS-to-FPGA Address Map
 The memory map of soft IP peripherals, as viewed by the microprocessor unit (MPU) of the HPS, starts at HPS-to-FPGA base address of 0xC000_0000.
 
-Refer to [Intel Arria 10 HPS Register Address Map and Definitions](https://www.intel.com/content/www/us/en/programmable/hps/arria-10/hps.html) for details.
+Refer to [Arria 10 HPS Register Address Map and Definitions](https://www.intel.com/content/www/us/en/programmable/hps/arria-10/hps.html) for details.
 
 | Peripheral | Address Offset | Size (bytes) | Attribute |
 | :-- | :-- | :-- | :-- |

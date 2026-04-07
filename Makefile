@@ -91,10 +91,7 @@ $(strip $(2))-package-design: | $(strip $(5))
 
 .PHONY: $(strip $(2))-build
 $(strip $(2))-build: | $(strip $(1))/output_files
-	cd $(strip $(1)) && quartus_syn $(strip $(3))
-	cd $(strip $(1)) && quartus_fit $(strip $(3))
-	cd $(strip $(1)) && quartus_asm $(strip $(3))
-	cd $(strip $(1)) && quartus_sta $(strip $(3)) --mode=finalize
+	cd $(strip $(1)) && quartus_sh --flow compile $(strip $(3)) -c $(strip $(3))
 
 .PHONY: $(strip $(2))-sw-build
 $(strip $(2))-sw-build:
