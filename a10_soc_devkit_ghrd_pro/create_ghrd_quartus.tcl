@@ -300,7 +300,7 @@ if { $fpga_pcie == 1 && ($pcie_count == 8 || $pcie_gen == 3) } {
 # Synthesis optimization settings
 set_global_assignment -name OPTIMIZATION_TECHNIQUE BALANCED
 # Fitter optimization settings
-#set_global_assignment -name PHYSICAL_SYNTHESIS ON
+set_global_assignment -name PHYSICAL_SYNTHESIS ON
 #set_global_assignment -name ALM_REGISTER_PACKING_EFFORT LOW
 #set_global_assignment -name OPTIMIZATION_MODE "SUPERIOR PERFORMANCE WITH MAXIMUM PLACEMENT EFFORT"
 set_global_assignment -name OPTIMIZATION_MODE "OPTIMIZE NETLIST FOR ROUTABILITY"

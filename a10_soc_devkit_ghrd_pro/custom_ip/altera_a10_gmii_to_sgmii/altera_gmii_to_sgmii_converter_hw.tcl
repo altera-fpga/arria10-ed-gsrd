@@ -174,21 +174,21 @@ proc do_compose { } {
 
   add_connection clk_bridge.out_clk gmii_to_sgmii_adapter_0.peri_clock
 
-  add_connection clk_bridge.out_clk eth_tse_0.control_port_clock_connection
+  add_connection clk_bridge.out_clk eth_tse_0.clk
   
   add_connection rst_bridge.out_reset gmii_to_sgmii_adapter_0.peri_reset
-  add_connection rst_bridge.out_reset eth_tse_0.reset_connection
+  add_connection rst_bridge.out_reset eth_tse_0.reset
 	
   add_connection hps_emac_interface_splitter_0.hps_gmii gmii_to_sgmii_adapter_0.hps_gmii
 	
-  add_connection eth_tse_0.pcs_transmit_clock_connection gmii_to_sgmii_adapter_0.pcs_transmit_clock
-  add_connection eth_tse_0.pcs_receive_clock_connection gmii_to_sgmii_adapter_0.pcs_receive_clock
+  add_connection eth_tse_0.tx_clk gmii_to_sgmii_adapter_0.pcs_transmit_clock
+  add_connection eth_tse_0.rx_clk gmii_to_sgmii_adapter_0.pcs_receive_clock
 
   add_connection gmii_to_sgmii_adapter_0.pcs_clock_enable eth_tse_0.clock_enable_connection
   add_connection gmii_to_sgmii_adapter_0.pcs_gmii eth_tse_0.gmii_connection
   add_connection gmii_to_sgmii_adapter_0.pcs_mii eth_tse_0.mii_connection
-  add_connection gmii_to_sgmii_adapter_0.pcs_transmit_reset eth_tse_0.pcs_transmit_reset_connection
-  add_connection gmii_to_sgmii_adapter_0.pcs_receive_reset eth_tse_0.pcs_receive_reset_connection
+  add_connection gmii_to_sgmii_adapter_0.pcs_transmit_reset eth_tse_0.reset_tx_clk
+  add_connection gmii_to_sgmii_adapter_0.pcs_receive_reset eth_tse_0.reset_rx_clk
 	
   # interfaces export
 	
@@ -232,7 +232,7 @@ proc do_compose { } {
 
   set_interface_property clock_in export_of clk_bridge.in_clk
   set_interface_property reset_in export_of rst_bridge.in_reset
-  set_interface_property tse_pcs_ref_clk_clock_connection export_of eth_tse_0.pcs_ref_clk_clock_connection
+  set_interface_property tse_pcs_ref_clk_clock_connection export_of eth_tse_0.ref_clk
 	
   set_interface_property gmii_to_sgmii_adapter_avalon_slave export_of gmii_to_sgmii_adapter_0.avalon_slave
   set_interface_property eth_tse_control_port export_of eth_tse_0.control_port
@@ -243,7 +243,7 @@ proc do_compose { } {
 
   set_interface_property tse_sgmii_status_connection export_of eth_tse_0.sgmii_status_connection
   set_interface_property tse_status_led_connection export_of eth_tse_0.status_led_connection
-  set_interface_property tse_serdes_control_connection export_of eth_tse_0.serdes_control_connection
+  set_interface_property tse_serdes_control_connection export_of eth_tse_0.rx_recovclkout
   set_interface_property tse_serial_connection export_of eth_tse_0.serial_connection
 
   set_interface_property emac_gtx_clk export_of hps_emac_interface_splitter_0.emac_gtx_clk

@@ -243,9 +243,9 @@ add_connection tse_rst_in.out_reset dma_tx.reset_n
 
 add_connection tse_rst_in.out_reset dma_rx.reset_n 
 
-add_connection tse_clk.out_clk tse.receive_clock_connection 
+add_connection tse_clk.out_clk tse.ff_rx_clk
 
-add_connection tse_clk.out_clk tse.transmit_clock_connection 
+add_connection tse_clk.out_clk tse.ff_tx_clk
 if { $dma_prefetch_enable == 1} {
 add_connection mm_bg_0.m0 dma_tx.prefetcher_csr
 set_connection_parameter_value mm_bg_0.m0/dma_tx.prefetcher_csr arbitrationPriority {1}
@@ -426,7 +426,7 @@ add_connection tse_rst_in.out_reset tse.reconfig_reset
 }
 }   
 
-add_connection refclk_125.out_clk tse.pcs_ref_clk_clock_connection 
+add_connection refclk_125.out_clk tse.ref_clk
 }
 
 add_connection mm_bg_0.m0 tse.control_port
@@ -434,7 +434,7 @@ set_connection_parameter_value mm_bg_0.m0/tse.control_port arbitrationPriority {
 set_connection_parameter_value mm_bg_0.m0/tse.control_port baseAddress {0x0000}
 set_connection_parameter_value mm_bg_0.m0/tse.control_port defaultConnection {0}
 
-add_connection tse_clk.out_clk tse.control_port_clock_connection 
+add_connection tse_clk.out_clk tse.clk
 
 add_connection tse_clk.out_clk tse_rst_in.clk
 
@@ -442,7 +442,7 @@ add_connection tse_clk.out_clk mm_bg_0.clk
 
 add_connection tse_rst_in.out_reset mm_bg_0.reset   
 
-add_connection tse_rst_in.out_reset tse.reset_connection 
+add_connection tse_rst_in.out_reset tse.reset
 
 # exported interfaces
 add_interface clk clock sink
@@ -506,13 +506,13 @@ if {$tse_variant == "PCS_ONLY"} {
 add_interface eth_tse_0_gmii_connection conduit end
 set_interface_property eth_tse_0_gmii_connection EXPORT_OF tse.gmii_connection
 add_interface eth_tse_0_pcs_receive_clock_connection clock source
-set_interface_property eth_tse_0_pcs_receive_clock_connection EXPORT_OF tse.pcs_receive_clock_connection
+set_interface_property eth_tse_0_pcs_receive_clock_connection EXPORT_OF tse.rx_clk
 add_interface eth_tse_0_pcs_transmit_clock_connection clock source
-set_interface_property eth_tse_0_pcs_transmit_clock_connection EXPORT_OF tse.pcs_transmit_clock_connection
+set_interface_property eth_tse_0_pcs_transmit_clock_connection EXPORT_OF tse.tx_clk
 add_interface eth_tse_0_pcs_transmit_reset_connection reset sink
-set_interface_property eth_tse_0_pcs_transmit_reset_connection EXPORT_OF tse.pcs_transmit_reset_connection
+set_interface_property eth_tse_0_pcs_transmit_reset_connection EXPORT_OF tse.reset_tx_clk
 add_interface eth_tse_0_pcs_receive_reset_connection reset sink
-set_interface_property eth_tse_0_pcs_receive_reset_connection EXPORT_OF tse.pcs_receive_reset_connection
+set_interface_property eth_tse_0_pcs_receive_reset_connection EXPORT_OF tse.reset_rx_clk
 }
 if {$devicefamily == "Arria 10"} {
 if { $reconfig_enable == 1} {
@@ -541,7 +541,7 @@ set_interface_property eth_tse_0_tbi_connection EXPORT_OF tse.tbi_connection
 add_interface eth_tse_0_status_led_connection conduit end
 set_interface_property eth_tse_0_status_led_connection EXPORT_OF tse.status_led_connection
 add_interface eth_tse_0_serdes_control_connection conduit end
-set_interface_property eth_tse_0_serdes_control_connection EXPORT_OF tse.serdes_control_connection
+set_interface_property eth_tse_0_serdes_control_connection EXPORT_OF tse.rx_recovclkout
 add_interface eth_tse_0_serial_connection conduit end
 set_interface_property eth_tse_0_serial_connection EXPORT_OF tse.serial_connection
 }
