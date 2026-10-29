@@ -1,8 +1,9 @@
-# Arria 10 Golden Hardware Reference Design (GHRD)
+# Arria 10 Baseline Hardware Reference Designs
 
-The GHRD is part of the Golden System Reference Design (GSRD), which provides a complete solution, including exercising soft IP in the fabric, booting to U-Boot, then Linux, and running sample Linux applications.
+This repository contains Baseline Hardware Reference Designs for Altera Arria 10 System On Chip (SoC) FPGA.
+This repository is part of the Baseline System Example Design, which provides a complete solution, including exercising soft IP in the fabric, booting to U-Boot, then Linux, and running sample Linux applications.
 
-Refer to the [Arria 10 SoC GSRD](https://www.rocketboards.org/foswiki/Documentation/Arria10SoCGSRD) for information about GSRD.
+Refer to the [HPS Baseline System Example Design User Guide: Arria 10 SoC Development Kit](https://www.rocketboards.org/foswiki/Documentation/Arria10SoCGSRD) for more information.
 
 These reference designs demonstrate the system integration between Hard Processor System (HPS) and FPGA IPs.
 ## Baseline feature
@@ -22,11 +23,11 @@ This is only applicable if the feature is enabled.
   - SGMII with HPS EMAC and Triple-Speed Ethernet FPGA IP (PHY)
 
 ## Dependency
-* Altera Quartus Prime 26.1
+* Altera Quartus Prime 26.3
 * Supported Board
   - Arria 10 SoC Development Kit
 
-## Tested Platform for the GHRD Make flow
+## Tested platform for the hardware build flow
 * SUSE Linux Enterprise Server 15 SP4
 
 ## Supported Designs

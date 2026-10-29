@@ -1,11 +1,11 @@
-# Arria 10 (A10) Golden Hardware Reference Design (GHRD)
+# HPS Baseline System Example Design for Arria 10 SoC Development Kit
 
-The GHRD is part of the Golden System Reference Design (GSRD), which provides a complete solution, including exercising soft IP in the fabric, booting to U-Boot, then Linux, and running sample Linux applications.
-
-Refer to the [Arria 10 SoC GSRD](https://www.rocketboards.org/foswiki/Documentation/Arria10SoCGSRD) for information about GSRD.
+This design is a Baseline Hardware Reference Design for Altera Arria 10 System On Chip (SoC) FPGA.
+This design is part of the Baseline System Example Design, which provides a complete solution, including exercising soft IP in the fabric, booting to U-Boot, then Linux, and running sample Linux applications.
+Refer to the [HPS Baseline System Example Design User Guide: Arria 10 SoC Development Kit](https://www.rocketboards.org/foswiki/Documentation/Arria10SoCGSRD) for more information.
 
 ## Build Steps
-1) Customize the GHRD settings in Makefile. Only necessary when the defaults are not suitable.
+1) Customize the design settings in Makefile. Only necessary when the defaults are not suitable.
 2) Generate the Quartus Project and source files.
    - Use target from [Supported Designs](#supported-designs)
 3) Compile Quartus Project and generate the configuration file
@@ -38,20 +38,20 @@ This design boots from SD/MMC and enabled SGMII with HPS EMAC and Triple-Speed E
 make generate-a10-soc-devkit-sdmmc-sgmii
 ```
 
-## GHRD Overview
+## Design overview
 
 ### Hard Processor System (HPS)
-The GHRD HPS configuration matches the board schematic. Refer to [Arria 10 Hard Processor System Technical Reference Manual](https://www.intel.com/content/www/us/en/docs/programmable/683711/latest) for more information on HPS configuration.
+The HPS configuration matches the board schematic. Refer to [Arria 10 Hard Processor System Technical Reference Manual](https://docs.altera.com/r/docs/683711/current) for more information on HPS configuration.
 
 ### HPS External Memory Interfaces (EMIF)
-The GHRD HPS EMIF configuration matches the board schematic. Refer to
-[External Memory Interfaces Arria 10 FPGA IP User Guide](https://www.intel.com/content/www/us/en/docs/programmable/683106/latest)
+The HPS EMIF configuration matches the board schematic. Refer to
+[External Memory Interfaces Arria 10 FPGA IP User Guide](https://docs.altera.com/r/docs/683106/current)
 for more information on HPS EMIF configuration.
 
 ### HPS-to-FPGA Address Map
 The memory map of soft IP peripherals, as viewed by the microprocessor unit (MPU) of the HPS, starts at HPS-to-FPGA base address of 0xC000_0000.
 
-Refer to [Arria 10 HPS Register Address Map and Definitions](https://www.intel.com/content/www/us/en/programmable/hps/arria-10/hps.html) for details.
+Refer to [Arria 10 HPS Register Address Map and Definitions](https://docs.altera.com/v/u/resources/r997982/arria-10-hps-register-map) for details.
 
 | Peripheral | Address Offset | Size (bytes) | Attribute |
 | :-- | :-- | :-- | :-- |
@@ -85,12 +85,12 @@ Note: All interrupt sources are also connected to an interrupt latency counter (
 | sgmii_2_pcs | 0x0000_0400 | 64 | CSR for ethernet controller | None |
 
 ### JTAG master interfaces
-The GHRD JTAG master interfaces allows you to access peripherals in the FPGA with System Console, through the JTAG master module. This access does not rely on HPS software drivers.
+The design JTAG master interfaces allow you to access peripherals in the FPGA with System Console, through the JTAG master module. This access does not rely on HPS software drivers.
 
-Refer to this [Guide](https://www.intel.com/content/www/us/en/docs/programmable/683819/current/analyzing-and-debugging-designs-with-84752.html) for information about system console.
+Refer to this [Guide](https://docs.altera.com/r/docs/683819/26.1/quartus-prime-pro-edition-user-guide-debug-tools/analyzing-and-debugging-designs-with-system-console) for information about system console.
 
 ### Interrupt Num
-The Interrupt Num in this readme are FPGA IRQ. offset of 19 when mapped to Generic Interrupt Controller (GIC) in device tree structure(dts). Refer to F2S_FPGA_IRQ0 in [GIC Interrupt Map for the Arria 10 SoC HPS](https://www.intel.com/content/www/us/en/docs/programmable/683711/current/gic-interrupt-map-for-the-arria-10-soc-hps.html).
+The Interrupt Num in this readme are FPGA IRQ. offset of 19 when mapped to Generic Interrupt Controller (GIC) in device tree structure(dts). Refer to F2S_FPGA_IRQ0 in [GIC Interrupt Map for the Arria 10 SoC HPS](https://docs.altera.com/r/docs/683711/25.3.1/arria-10-hard-processor-system-technical-reference-manual/gic-interrupt-map-for-the-arria-10-soc-hps).
 Number 51 is shown for F2H FPGA Interrupt[0] as the first 32 IRQ is reserved. (51 - 32 = 19).
 
 ## Binaries location
